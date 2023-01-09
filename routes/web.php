@@ -25,6 +25,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/prova', [ProvaController::class, 'index'] )->name('prova');
 Route::post('/gerar-pdf', [ProvaController::class, 'store'] )->name('gerar-pdf'); 
+Route::get('/20q', [ProvaController::class, 'quest'] )->name('quest'); 
 
 Route::get('/corrigir', [CorrecaoController::class, 'index'] )->name('corrigir');
 
