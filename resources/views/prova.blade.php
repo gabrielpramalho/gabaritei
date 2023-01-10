@@ -40,54 +40,56 @@
             Provas
         </h2>
     </x-slot>
+    
+<div class=" bg-gray-100 p-0 sm:p-6">
+  <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+    <h1 class="text-2xl font-bold mb-8 text-center">Lorem ipsum</h1>
+    <form id="form" method="POST" action="/gerar-pdf"  >
+      @csrf
+      <div class="relative z-0 w-full mb-5">
+          <select
+            name="questoes"
+            required
+            value=""
+            onclick="this.setAttribute('value', this.value);"
+            class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+          >
+            <option value="" selected disabled hidden></option>
+            <option value="1">20 questões</option>
+            <option value="2">40 questões</option>
+            <option value="3">60 questões</option>
+
+          </select>
+          <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Selecione a quatidade de questões</label>
+          <span class="text-sm text-red-600 hidden" id="error">A opção precisa ser selecionada</span>
+        </div>
+
+      <div class="relative z-0 w-full mb-5">
+        <input
+          type="number"
+          name="qtd"
+          placeholder=" "
+          required
+          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+        />
+        <label for="qtd" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Quantidade de questões</label>
+        <span class="text-sm text-red-600 hidden" id="error">A quantidade é obrigatório</span>
+      </div>
+
+
+
+      <button
+        id="button"
+        type="submit"
+        class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-emerald-500 hover:bg-emerald-600 hover:shadow-lg focus:outline-none"
+      >
+        Gerar Provas
+      </button>
+    </form>
+  </div>
+</div>
 </x-app-layout>
 
-<div class=" bg-gray-100 p-0 sm:p-6">
-    <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-      <h1 class="text-2xl font-bold mb-8">Gerar Prova</h1>
-      <form id="form" method="POST" action="/gerar-pdf"  >
-        @csrf
-        <div class="relative z-0 w-full mb-5">
-            <select
-              name="questoes"
-              value=""
-              onclick="this.setAttribute('value', this.value);"
-              class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            >
-              <option value="" selected disabled hidden></option>
-              <option value="1">20 questões</option>
-              <option value="2">40 questões</option>
-              <option value="3">60 questões</option>
-
-            </select>
-            <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Selecione a quatidade de questões</label>
-            <span class="text-sm text-red-600 hidden" id="error">A opção precisa ser selecionada</span>
-          </div>
-
-        <div class="relative z-0 w-full mb-5">
-          <input
-            type="number"
-            name="qtd"
-            placeholder=" "
-            required
-            class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-          />
-          <label for="qtd" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Quantidade de questões</label>
-          <span class="text-sm text-red-600 hidden" id="error">A quantidade é obrigatório</span>
-        </div>
-  
-  
-  
-        <button
-          id="button"
-          type="submit"
-          class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-emerald-500 hover:bg-emerald-600 hover:shadow-lg focus:outline-none"
-        >
-          Gerar Provas
-        </button>
-      </form>
-    </div>
-  </div>
   
   <script>
   
