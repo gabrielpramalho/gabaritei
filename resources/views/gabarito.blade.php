@@ -37,14 +37,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Provas
+            Gabarito
         </h2>
     </x-slot>
     
 <div class=" bg-gray-100 p-0 sm:p-6">
   <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-    <h1 class="text-2xl font-bold mb-8 text-center">Lorem ipsum</h1>
-    <form id="form" method="POST" action="/gerar-pdf"  >
+    <h1 class="text-2xl font-bold mb-8 text-center">Gabarito</h1>
+    <form id="form" method="POST" action="gabarito/questoes"  >
       @csrf
       <div class="relative z-0 w-full mb-5">
           <select
@@ -64,26 +64,12 @@
           <span class="text-sm text-red-600 hidden" id="error">A opção precisa ser selecionada</span>
         </div>
 
-      <div class="relative z-0 w-full mb-5">
-        <input
-          type="number"
-          name="qtd"
-          placeholder=" "
-          required
-          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-        />
-        <label for="qtd" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Quantidade de cartões-respostas</label>
-        <span class="text-sm text-red-600 hidden" id="error">A quantidade é obrigatório</span>
-      </div>
-
-
-
       <button
         id="button"
         type="submit"
         class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-emerald-500 hover:bg-emerald-600 hover:shadow-lg focus:outline-none"
       >
-        Gerar z
+        Enviar
       </button>
     </form>
   </div>

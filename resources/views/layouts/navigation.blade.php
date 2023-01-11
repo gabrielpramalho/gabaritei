@@ -20,6 +20,10 @@
                         Gerar Prova
                     </x-nav-link>
 
+                    <x-nav-link :href="route('gabarito')" :active="request()->routeIs('gabarito')">
+                        Gerar Gabarito
+                    </x-nav-link>
+
                     <x-nav-link :href="route('corrigir')" :active="request()->routeIs('corrigir')">
                         Corrigir Provas
                     </x-nav-link>
