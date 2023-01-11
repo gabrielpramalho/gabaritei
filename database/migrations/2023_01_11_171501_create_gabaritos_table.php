@@ -15,6 +15,9 @@ class CreateGabaritosTable extends Migration
     {
         Schema::create('gabaritos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('nome');
+            $table->json('respostas');
             $table->timestamps();
         });
     }
