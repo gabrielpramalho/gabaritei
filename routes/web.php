@@ -33,7 +33,7 @@ Route::get('/corrigir-prova', [CorrecaoController::class, 'test'] )->middleware(
 
 Route::get('/gabarito', [GabaritoController::class, 'index'] )->middleware(['auth'])->name('gabarito');
 Route::post('/gabarito/questoes', [GabaritoController::class, 'questoes'] )->middleware(['auth'])->name('gabarito/questoes');
-Route::post('/gabarito/questoes-respondidas', [GabaritoController::class, 'gabarito'] )->middleware(['auth'])->name('gabarito/questoes-respondidas');
+Route::post('/gabarito/questoes-respondidas/{qtd}', [GabaritoController::class, 'gabarito'] )->middleware(['auth'])->name('gabarito/questoes-respondidas');
 
 
 
