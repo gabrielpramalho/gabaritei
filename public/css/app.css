@@ -722,12 +722,6 @@ select {
 .-mr-2 {
   margin-right: -0.5rem;
 }
-.mb-7 {
-  margin-bottom: 1.75rem;
-}
-.mb-9 {
-  margin-bottom: 2.25rem;
-}
 .block {
   display: block;
 }
@@ -1023,12 +1017,6 @@ select {
 .p-2 {
   padding: 0.5rem;
 }
-.p-4 {
-  padding: 1rem;
-}
-.p-8 {
-  padding: 2rem;
-}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1076,18 +1064,6 @@ select {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-.py-14 {
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
-}
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
 }
 .pt-3 {
   padding-top: 0.75rem;
@@ -1243,10 +1219,6 @@ select {
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
-}
-.text-emerald-400 {
-  --tw-text-opacity: 1;
-  color: rgb(52 211 153 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
@@ -1625,14 +1597,6 @@ select {
 
   .sm\:p-6 {
     padding: 1.5rem;
-  }
-
-  .sm\:p-8 {
-    padding: 2rem;
-  }
-
-  .sm\:p-12 {
-    padding: 3rem;
   }
 
   .sm\:p-14 {

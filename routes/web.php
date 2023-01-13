@@ -27,6 +27,7 @@ Route::get('/20q', [ProvaController::class, 'quest'] )->middleware(['auth'])->na
 
 Route::get('/corrigir', [CorrecaoController::class, 'index'] )->middleware(['auth'])->name('corrigir');
 Route::get('/corrigir-prova', [CorrecaoController::class, 'test'] )->middleware(['auth'])->name('corrigir-prova');
+Route::post('/corrigir-prova', [CorrecaoController::class, 'corrigir'] )->middleware(['auth'])->name('corrigir-prova');
 
 Route::get('/gabarito', [GabaritoController::class, 'index'] )->middleware(['auth'])->name('gabarito');
 Route::post('/gabarito/questoes', [GabaritoController::class, 'questoes'] )->middleware(['auth'])->name('gabarito/questoes');
