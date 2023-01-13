@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Gabarito extends Model
 {
     use HasFactory;
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }
+

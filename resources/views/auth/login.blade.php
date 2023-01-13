@@ -32,6 +32,10 @@
                                 required autocomplete="current-password" />
             </div>
 
+            <div class="block mt-4">
+                <a class="text-gray-400 underline" href="/register">Registre-se</a>
+            </div>
+
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
