@@ -53,9 +53,22 @@ class CorrecaoController extends Controller
         $correcao->respostas = null;
         $correcao->nota = 0;
         
-        $correcao->save();
+        // $correcao->save();
+
+
+        $command = escapeshellcmd("python ".base_path().'/public/python/1coluna.py '.$name." ".$gabarito);
+
+        // dd($command);
+        $output = shell_exec($command);
+        // echo $output;
+        dd($output);
+
+
+
+
+
         
-        return redirect()->back();
+        // return redirect()->back();
     }
 
     public function test()

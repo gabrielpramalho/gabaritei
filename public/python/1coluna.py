@@ -1,18 +1,63 @@
 import cv2 as cv
 import numpy as np
+import sys
+import mysql.connector
+from mysql.connector import errorcode
 from matplotlib import pyplot as plt
 from imutils.object_detection import non_max_suppression
 from pyzbar.pyzbar import decode
 
 
-img = 'C:/Users/Gabriel/Documents/breeze/lastchance/public/python/prova-1-coluna.png'
+id = sys.argv[2]
+prova = sys.argv[1]
+path = 'C:/Users/Gabriel/Documents/breeze/lastchance/storage/app\public/provas/'
+img = f"{path}/{prova}"
+
+print(prova)
 
 
 photo = cv.imread(img)
 
 
 
-answers = ["00000", 'A', 'B', 'C', 'D', 'E', 'A', 'B', 'C', 'D', 'E', 'A', 'B', 'C', 'D', 'E', 'A', 'B', 'C', 'D', 'E']
+try:
+	db_connection = mysql.connector.connect(host='localhost', user='root', password='', database='gabaritei')
+	# print("Database connection made!")
+    
+except mysql.connector.Error as error:
+	if error.errno == errorcode.ER_BAD_DB_ERROR:
+		print("Database doesn't exist")
+	elif error.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+		print("User name or password is wrong")
+	else:
+		print(error)
+else:
+	db_connection.close()
+
+
+db_connection.reconnect()
+cursor = db_connection.cursor()
+sql = f"SELECT respostas FROM gabaritos WHERE id={id}"
+cursor.execute(sql)
+
+
+respostas = cursor.fetchone()
+
+respostas = str(respostas[0])
+respostas = respostas.replace('b', '')
+respostas = respostas.replace('[', '')
+respostas = respostas.replace(']', '')
+respostas = respostas.replace('"', '')
+respostas = respostas.split(',')
+respostas = list(respostas)
+
+
+
+cursor.close()
+db_connection.close()
+
+
+answers = respostas
 
 def BarcodeReader(image):
     
