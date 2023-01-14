@@ -181,7 +181,16 @@ class GabaritoController extends Controller
 
         $gabarito->save();
 
-        return redirect()->route('gabarito')->with('msg', 'Gabarito criado com sucesso!');
+        return redirect()->route('gabaritos')->with('msg', 'Gabarito criado com sucesso!');
 
+    }
+
+
+    public function show()
+    {
+        $gabaritos = auth()->user()->gabaritos;
+
+
+        return view('gabaritos', ["gabaritos" => $gabaritos]);
     }
 }

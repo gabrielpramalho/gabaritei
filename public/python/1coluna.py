@@ -13,7 +13,7 @@ prova = sys.argv[1]
 path = 'C:/Users/Gabriel/Documents/breeze/lastchance/storage/app\public/provas/'
 img = f"{path}/{prova}"
 
-print(prova)
+# print(prova)
 
 
 photo = cv.imread(img)
@@ -48,6 +48,7 @@ respostas = respostas.replace('b', '')
 respostas = respostas.replace('[', '')
 respostas = respostas.replace(']', '')
 respostas = respostas.replace('"', '')
+respostas = respostas.replace("'", '')
 respostas = respostas.split(',')
 respostas = list(respostas)
 
@@ -358,7 +359,7 @@ if lasty1_coluna1 < 530:
 # print(coluna1)
 
 
-# print(answers)
+# print(answers[0])
 
 total = concatenate_questions(barcode, coluna1)
 # print(total)
@@ -384,7 +385,10 @@ for i in range(0, len(answers)):
 # cv.imshow("After NMS", cropped)
 print(correcao)
 print(count)
+print(barcode)
 # print(barcode)
+
+
 
 
   

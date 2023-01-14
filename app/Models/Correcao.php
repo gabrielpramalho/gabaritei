@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Correcao extends Model
 {
     use HasFactory;
+
+    public function gabarito(){
+        return $this->belongsTo('App\Models\Gabarito');
+    }
 }

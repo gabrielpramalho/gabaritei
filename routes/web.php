@@ -23,13 +23,14 @@ Route::get('/', function () {
 
 Route::get('/prova', [ProvaController::class, 'index'] )->middleware(['auth'])->name('prova');
 Route::post('/gerar-pdf', [ProvaController::class, 'store'] )->middleware(['auth'])->name('gerar-pdf'); 
-Route::get('/20q', [ProvaController::class, 'quest'] )->middleware(['auth'])->name('quest'); 
+Route::get('/provas/{id}', [ProvaController::class, 'show_provas'] )->middleware(['auth'])->name('show_provas');
 
 Route::get('/corrigir', [CorrecaoController::class, 'index'] )->middleware(['auth'])->name('corrigir');
 Route::get('/corrigir-prova', [CorrecaoController::class, 'test'] )->middleware(['auth'])->name('corrigir-prova');
 Route::post('/corrigir-prova', [CorrecaoController::class, 'corrigir'] )->middleware(['auth'])->name('corrigir-prova');
 
 Route::get('/gabarito', [GabaritoController::class, 'index'] )->middleware(['auth'])->name('gabarito');
+Route::get('/gabaritos', [GabaritoController::class, 'show'] )->middleware(['auth'])->name('gabaritos');
 Route::post('/gabarito/questoes', [GabaritoController::class, 'questoes'] )->middleware(['auth'])->name('gabarito/questoes');
 Route::post('/gabarito/questoes-respondidas/{qtd}', [GabaritoController::class, 'gabarito'] )->middleware(['auth'])->name('gabarito/questoes-respondidas');
 

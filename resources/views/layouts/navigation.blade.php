@@ -27,6 +27,9 @@
                     <x-nav-link :href="route('corrigir')" :active="request()->routeIs('corrigir')">
                         Corrigir Provas
                     </x-nav-link>
+                    <x-nav-link :href="route('gabaritos')" :active="request()->routeIs('gabaritos')">
+                        Resultados
+                    </x-nav-link>
                 </div>
             </div>
 

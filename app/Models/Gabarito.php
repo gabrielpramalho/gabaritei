@@ -12,5 +12,10 @@ class Gabarito extends Model
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
+
+    public function provas()
+    {
+        return $this->hasMany('App\Models\Correcao');
+    }
 }
 

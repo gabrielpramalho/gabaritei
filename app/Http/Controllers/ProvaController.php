@@ -59,8 +59,8 @@ class ProvaController extends Controller
         // return redirect()->route('dashboard');
     }
 
-    public function quest()
+    public function show_provas($id)
     {
-        return view('provas/20q');
+        return view('provas');
     }
 }
