@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Prova;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class ProvaController extends Controller
@@ -61,6 +62,15 @@ class ProvaController extends Controller
 
     public function show_provas($id)
     {
-        return view('provas');
+
+        $provas = DB::table('correcaos')->where('gabarito_id', $id)->get();
+
+
+        return view('gabaritos-provas',
+            [
+                "id"=> $id,
+                "provas" => $provas
+            ]
+        );
     }
 }

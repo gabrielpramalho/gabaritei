@@ -95,5 +95,21 @@ class CorrecaoController extends Controller
 
     }
 
+    public function show_prova($id)
+    {
+        $correcao = Correcao::find($id);
+
+        $respostas = $correcao->respostas;
+        $elements = array("[", "]", "'", '"', " ");
+        $respostas = str_replace($elements, "", $respostas);
+        $respostas = explode(",", $respostas);
+
+        // dd($respostas);
+
+        return view('respostas', 
+        [
+            "respostas" => $respostas
+        ]);
+    }
 
 }

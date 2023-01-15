@@ -226,12 +226,7 @@ for (x1, y1, x2, y2) in boxes:
     #coluna 3 : x1 > 500
 
 
-    
-
-
     cv.rectangle(cropped, (x1, y1), (x2, y2), (255, 0, 0), 2)
-
-
 
 
 # # cv.rectangle(cropped, (60, 40), (210, 580), (255, 0, 255), 2)
@@ -278,7 +273,6 @@ boxes_marked = non_max_suppression(np.array(boxes_marked))
 newList = boxes_marked[::-1]
 
 coluna1 = list()
-
 
 
 # #coluna 2

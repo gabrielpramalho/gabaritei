@@ -193,4 +193,6 @@ class GabaritoController extends Controller
 
         return view('gabaritos', ["gabaritos" => $gabaritos]);
     }
+
+
 }
