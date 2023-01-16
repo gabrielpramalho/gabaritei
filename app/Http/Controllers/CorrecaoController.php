@@ -82,18 +82,6 @@ class CorrecaoController extends Controller
         return redirect()->back();
     }
 
-    public function test()
-    {
-
-        $command = escapeshellcmd("python ".base_path().'/public/python/1coluna.py');
-        // $command = escapeshellcmd("python ".base_path().'/public/python/index.py');
-        // dd($command);
-        $output = shell_exec($command);
-        echo $output;
-        // dd($output);
-
-
-    }
 
     public function show_prova($id)
     {

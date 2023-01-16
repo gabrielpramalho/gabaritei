@@ -43,7 +43,7 @@
     
 <div class=" bg-gray-100 p-0 sm:p-6">
   <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-    <h1 class="text-2xl font-bold mb-8 text-center">Lorem ipsum</h1>
+    <h1 class="text-2xl font-bold mb-8 text-center">Cartão-resposta</h1>
     <form id="form" method="POST" action="/gerar-pdf"  >
       @csrf
       <div class="relative z-0 w-full mb-5">
@@ -83,7 +83,7 @@
         type="submit"
         class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-emerald-500 hover:bg-emerald-600 hover:shadow-lg focus:outline-none"
       >
-        Gerar z
+        Gerar
       </button>
     </form>
   </div>
