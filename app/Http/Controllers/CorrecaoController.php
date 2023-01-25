@@ -24,59 +24,115 @@ class CorrecaoController extends Controller
 
     public function corrigir(Request $request)
     {
-
+        
         $id_user = auth()->user()->id;
-        $name = $request->file('prova')->getClientOriginalName();
-        $extension = $request->file('prova')->getClientOriginalExtension();
+        $files = $request->file('prova');
+        
+        foreach ($files as $file){
+            $name = $file->getClientOriginalName();
+        
+            $extension = $file->getClientOriginalExtension();
+
+            
+            $name = $id_user."_".$name;
+
+            $name_db = DB::table('correcaos')->where('prova', $name)->first();
+
+            if($name_db != null){
+                $randomString = Str::random(10);
+                $name = $randomString.".".$extension;
+                
+            }
+
+            $file->storeAs('public/provas', $name);
+
+            $gabarito = $request->gabarito;
+
+            $qtd = DB::table('gabaritos')->where('id', $gabarito)->value('qtd');
+        
+    
+            $correcao = new Correcao();
+            $correcao->user_id = $id_user;
+            $correcao->gabarito_id = $gabarito;
+            $correcao->prova = $name;
+    
+    
+    
+            if($qtd == 20){
+                $command = escapeshellcmd("python ".base_path().'/public/python/1coluna.py '.$name." ".$gabarito);
+            }elseif($qtd == 40 ){
+                $command = escapeshellcmd("python ".base_path().'/public/python/2colunas.py '.$name." ".$gabarito);
+            }elseif($qtd == 60 ){
+                $command = escapeshellcmd("python ".base_path().'/public/python/3colunas.py '.$name." ".$gabarito);
+            }
+    
+            // dd($command);
+            $output = shell_exec($command);
+            
+            $output = explode("\n", $output);
+    
+    
+    
+            $correcao->respostas = json_encode($output[0]);
+            $correcao->nota = $output[1];
+            $correcao->codebar = $output[2];
+            
+    
+            $correcao->save();
+        }
+
+        // $name = $request->file('prova')->getClientOriginalName();
+        
+        // $extension = $request->file('prova')->getClientOriginalExtension();
 
         
-        $name = $id_user."_".$name;
+        // $name = $id_user."_".$name;
 
 
-        $name_db = DB::table('correcaos')->where('prova', $name)->first();
+        // $name_db = DB::table('correcaos')->where('prova', $name)->first();
 
-        if($name_db != null){
-            $randomString = Str::random(10);
-            $name = $randomString.".".$extension;
+        // if($name_db != null){
+        //     $randomString = Str::random(10);
+        //     $name = $randomString.".".$extension;
             
-        }
-        $request->file('prova')->storeAs('public/provas', $name);
+        // }
+        // $request->file('prova')->storeAs('public/provas', $name);
 
 
 
-        $gabarito = $request->gabarito;
+        // $gabarito = $request->gabarito;
 
-        $qtd = DB::table('gabaritos')->where('id', $gabarito)->value('qtd');
+        // $qtd = DB::table('gabaritos')->where('id', $gabarito)->value('qtd');
     
 
-        $correcao = new Correcao();
-        $correcao->user_id = $id_user;
-        $correcao->gabarito_id = $gabarito;
-        $correcao->prova = $name;
+        // $correcao = new Correcao();
+        // $correcao->user_id = $id_user;
+        // $correcao->gabarito_id = $gabarito;
+        // $correcao->prova = $name;
 
 
 
-        if($qtd == 20){
-            $command = escapeshellcmd("python ".base_path().'/public/python/1coluna.py '.$name." ".$gabarito);
-        }elseif($qtd == 40 ){
-            $command = escapeshellcmd("python ".base_path().'/public/python/2colunas.py '.$name." ".$gabarito);
-        }elseif($qtd == 60 ){
-            $command = escapeshellcmd("python ".base_path().'/public/python/3colunas.py '.$name." ".$gabarito);
-        }
+        // if($qtd == 20){
+        //     $command = escapeshellcmd("python ".base_path().'/public/python/1coluna.py '.$name." ".$gabarito);
+        // }elseif($qtd == 40 ){
+        //     $command = escapeshellcmd("python ".base_path().'/public/python/2colunas.py '.$name." ".$gabarito);
+        // }elseif($qtd == 60 ){
+        //     $command = escapeshellcmd("python ".base_path().'/public/python/3colunas.py '.$name." ".$gabarito);
+        // }
 
-        // dd($command);
-        $output = shell_exec($command);
+        // // dd($command);
+        // $output = shell_exec($command);
         
-        $output = explode("\n", $output);
+        // $output = explode("\n", $output);
 
 
 
-        $correcao->respostas = json_encode($output[0]);
-        $correcao->nota = $output[1];
-        $correcao->codebar = $output[2];
+        // $correcao->respostas = json_encode($output[0]);
+        // $correcao->nota = $output[1];
+        // $correcao->codebar = $output[2];
         
 
-        $correcao->save();
+        // $correcao->save();
 
         
         return redirect()->back();
