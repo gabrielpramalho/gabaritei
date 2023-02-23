@@ -60,7 +60,7 @@
             <option value="3">60 questões</option>
 
           </select>
-          <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Selecione a quatidade de questões</label>
+          <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Selecione a quantidade de questões</label>
           <span class="text-sm text-red-600 hidden" id="error">A opção precisa ser selecionada</span>
         </div>
 

@@ -390,8 +390,11 @@ for (x1, y1, x2, y2) in newList:
     aux = abs(y1 - lasty1_coluna1)
 
     if aux >= 2:
+
       if(aux > 40):
         coluna1.append("X")
+
+        
       coluna1.append(checkAlternative(x1, x2, "coluna1"))
     else:
       coluna1.pop()
